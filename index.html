@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
+        <meta charset="UTF-8" />
+        <meta name="google" content="notranslate">
+        <meta http-equiv="Content-Language" content="en" />
+        <title>dug</title>
+        <meta name="description" content="A simple todo application based on digger">
+        <meta name="keywords" content="">
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0-rc2/css/bootstrap.min.css">
+        
+        <!--[if lt IE 9]>
+          <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->   
+
+    </head>
+
+    <!--
+      CHANGE YOUR WAREHOUSE HERE
+     -->
+    <body>
+
+     <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">
+            dug
+          </a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">home</a></li>
+          </ul>
+          
+          <ul class="nav navbar-nav navbar-right" ng-show="user">
+
+            <li style="margin-top:10px;" class="">
+                
+                {{ user.username }}
+     
+            </li>
+
+          </ul>
+          
+        </div>
+      </div>
+    </div>
+
+    <div style="padding-top:70px;">
+
+
+      <!--
+        SET THE WAREHOUSE HERE
+       -->
+
+      <digger warehouse="binocarlos/todo-example" selector="todo:sort(name)">
+
+        <div digger-radio for="warehouse" class="container" style="font-size:1.2em;" ng-cloak>
+
+          <div class="row">
+            <div class="col-sm-6">
+              <h3>Things I need to do</h3>
+              <div>
+
+
+                <table class="table table-striped">
+                  <tbody>
+                    <tr digger-repeat="filter('.done:not')">
+                      <td>
+                        {{ $digger.title() }}
+                      </td>
+                      <td>
+                        <span ng-if="$digger.hasClass('important')" class="label label-danger">important</span>
+                      </td>
+                      <td>
+                        {{ $digger.attr('description') }}
+                      </td>
+
+                    </tr>
+                  </tbody>
+                </table>
+
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <h3>Things I have done</h3>
+              <div>
+                
+                <table class="table table-striped">
+                  <tbody>
+                    <tr digger-repeat="filter('.done')">
+                      <td>
+                        {{ $digger.title() }}
+                      </td>
+                      <td>
+                        <span ng-if="$digger.hasClass('important')" class="label label-danger">important</span>
+                      </td>
+                      <td>
+                        {{ $digger.attr('description') }}
+                      </td>
+
+                    </tr>
+                  </tbody>
+                </table>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    <div class="container">
+
+      <hr>
+      <footer>
+        <p>&copy; digger.io 2013</p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0-rc2/js/bootstrap.min.js"></script>
+    <script src="http://localhost:8080/api/v1.angularplus.js"></script>
+
+    </body>
+</html> 
