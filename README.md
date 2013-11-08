@@ -3,6 +3,8 @@ dug
 
 A simple todo application based on digger - used as an example in the docs
 
+![Screenshot of dug](screenshot.gif "screenshot")
+
 ##installation
 
 The app runs as a web-page and connects to digger.io to load data.
